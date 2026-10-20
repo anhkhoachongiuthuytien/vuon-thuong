@@ -162,7 +162,7 @@
   function bloom(){
     const token=++sequence;clearTimeout(letterTimer);if(letter.open)letter.close();
     actions.hidden=true;roseButton.hidden=true;whisper.textContent='Từ một bông hoa, cả khu vườn đang thức giấc…';
-    status.textContent='Khu vườn đang nở hoa. Một tấm thiệp đang chờ bạn.';
+    status.textContent='Khu vườn đang nở hoa. Một tấm thiệp đang chờ cậu.';
     setState('growing');elapsed=0;started=performance.now();run();
     const duration=motion.matches?80:8100;
     letterTimer=setTimeout(()=>{
@@ -176,7 +176,7 @@
   function openLetter(){
     if(letter.open)return;
     letter.showModal();document.querySelector('#view-garden').focus({preventScroll:true});
-    status.textContent='Tấm thiệp dành cho bạn đã mở.';
+    status.textContent='Tấm thiệp dành cho cậu đã mở.';
   }
   function closeLetter(){letter.close();document.querySelector('#read-letter').focus({preventScroll:true});}
   roseButton.addEventListener('click',()=>{if(state==='ready')bloom();});
