@@ -1,0 +1,6 @@
+__pycache__/
+*.pyc
+.impeccable/review/
+.impeccable/mocks/
+qa/
+qa*.cjs

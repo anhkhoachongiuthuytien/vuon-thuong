@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#c4e5e7">
+  <meta name="description" content="Từ một bông hoa nhỏ, gửi bạn cả một vườn thương. Một tấm thiệp và khu vườn dành riêng cho bạn.">
+  <title>Dành bạn, cả một vườn thương</title>
+  <link rel="icon" href="flower.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body data-state="ready">
+  <main class="experience" aria-label="Vườn hoa dành tặng bạn">
+    <div class="sky" aria-hidden="true"><div class="cloud cloud-one"></div><div class="cloud cloud-two"></div><div class="cloud cloud-three"></div></div>
+    <canvas id="garden" aria-hidden="true"></canvas>
+    <p class="dedication">Dành bạn, cả một vườn thương.</p>
+    <div class="intro" id="intro">
+      <h1>Từ một bông hoa nhỏ…</h1>
+      <p>Chạm vào hoa, một điều dịu dàng đang chờ bạn.</p>
+    </div>
+    <button class="rose-touch" id="rose-touch" aria-label="Chạm bông hồng để khu vườn nở hoa"><span class="sr-only">Chạm để hoa nở</span></button>
+    <p class="whisper" id="whisper" aria-hidden="true">Có một điều dịu dàng dành cho bạn.</p>
+    <div class="garden-actions" id="garden-actions" hidden>
+      <button class="soft-button" id="read-letter">Đọc lại thiệp</button>
+      <button class="soft-button" id="replay">Cho hoa nở lại</button>
+    </div>
+    <p class="sr-only" id="status" role="status" aria-live="polite">Chạm bông hồng để mở món quà.</p>
+    <noscript><div class="no-script">Vườn hoa cần JavaScript để nở. Hãy bật JavaScript rồi tải lại trang nhé.<p>Gửi bạn thật nhiều thương mến. Mong những điều đẹp đẽ luôn nở bên bạn.</p></div></noscript>
+  </main>
+  <dialog class="letter" id="letter" aria-labelledby="letter-title">
+    <button class="close-letter" id="close-letter" aria-label="Đóng thiệp, ngắm vườn hoa"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg></button>
+    <article class="letter-content">
+      <svg class="letter-flower" viewBox="0 0 48 64" fill="none" aria-hidden="true"><path d="M24 58V29m0 18c-8 0-13-5-14-10 9-1 14 3 14 10Zm0-7c8 0 13-5 14-10-9-1-14 3-14 10Z" stroke="#50765a" stroke-width="1.4"/><path d="M24 32C7 28 9 16 14 15c-1-8 6-11 10-5 4-6 11-3 10 5 5 1 7 13-10 17Z" fill="#ecc0d1" stroke="#b56d8c" stroke-width="1.1"/><path d="M24 28c-9-5-9-11-5-12 2-1 4 1 5 4 1-3 3-5 5-4 4 1 4 7-5 12Z" stroke="#b56d8c" stroke-width="1.1"/></svg>
+      <p class="salutation" id="salutation">Gửi Tiên iu dấu,</p>
+      <h2 id="letter-title">Mong những<br>điều đẹp đẽ<br>luôn nở bên cậu.</h2>
+      <div class="letter-body">
+        <p>Một bông hoa có thể làm một ngày thêm đẹp,<br>còn cậu làm thế giới của tớ dịu dàng hơn.</p>
+        <p>Nhân ngày 20/10, chúc tình yêu của tớ luôn được yêu thương, trân trọng và có thật nhiều niềm vui. Mong cậu đủ bình yên để tận hưởng những điều nhỏ bé, đủ tự tin để theo đuổi những điều mình yêu.</p>
+        <p>Hôm nay và cả những ngày sau,<br>hãy cứ rạng rỡ theo cách của riêng mình nhé.</p>
+      </div>
+      <p class="signature" id="signature">Gửi em thật nhiều thương mến <svg viewBox="0 0 20 20" aria-label="trái tim" role="img"><path d="M10 16s-7-4.5-7-9a4 4 0 0 1 7-2 4 4 0 0 1 7 2c0 4.5-7 9-7 9Z"/></svg></p>
+      <button class="letter-return" id="view-garden">Ngắm vườn hoa</button>
+    </article>
+  </dialog>
+  <script src="garden.js"></script>
+</body>
+</html>

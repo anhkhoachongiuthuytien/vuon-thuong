@@ -1,0 +1,132 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-20T19:09:26.5350766Z",
+  "title": "Design System: Vườn thương",
+  "extensions": {
+    "shadows": [
+      {
+        "name": "paper",
+        "value": "0 20px 70px #425d5430",
+        "purpose": "Diffuse depth behind the cream letter."
+      },
+      {
+        "name": "soft-button",
+        "value": "0 5px 18px #39544716",
+        "purpose": "Small lift under final garden controls."
+      }
+    ],
+    "motion": [
+      {
+        "name": "intro-out",
+        "value": "1s ease",
+        "purpose": "Opacity to 0, blur to 4px, translate up 10px when growth begins."
+      },
+      {
+        "name": "garden-growth",
+        "value": "8100ms",
+        "purpose": "ready → growing → garden, followed by automatic native dialog opening; delays 0.45–5.05s and durations 2–3.7s use 1-(1-t)^3 easing."
+      },
+      {
+        "name": "letter-in",
+        "value": "0.7s cubic-bezier(.16,1,.3,1)",
+        "purpose": "Opacity 0→1, translateY 20px→0, scale .97→1."
+      },
+      {
+        "name": "actions-in",
+        "value": "0.7s ease",
+        "purpose": "Opacity 0→1 and vertical translate 12px→0."
+      },
+      {
+        "name": "button-hover",
+        "value": "0.2s",
+        "purpose": "Background and transform transition; translateY(-2px), returning to 0 on active."
+      },
+      {
+        "name": "reduced-motion",
+        "value": "80ms",
+        "purpose": "Resolve growth, remove sway and all falling leaves/petals and CSS animations/transitions, then focus explicit letter control. Changing preference during growth resolves immediately to garden."
+      },
+      {
+        "name": "canvas-wind",
+        "value": "~30fps",
+        "purpose": "Independent slow sway; no sway under reduced motion, no painting while hidden."
+      },
+      {
+        "name": "botanical-drift",
+        "value": "10–25px/s",
+        "purpose": "Four translucent leaf/petal shapes in ready; 13 below 650px or 23 at larger widths thereafter. Sizes 3–7.3px, alpha 0.35–0.62, slow lateral sway/rotation/flutter. Disabled under reduced motion."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "compact-width",
+        "value": "600px",
+        "purpose": "CSS mobile typography, spacing and hit target placement at max-width."
+      },
+      {
+        "name": "canvas-mobile",
+        "value": "650px",
+        "purpose": "Canvas uses 54 flowers below this width; otherwise min(128, round(width/12))."
+      },
+      {
+        "name": "short-height",
+        "value": "650px",
+        "purpose": "Compact intro and letter at max-height."
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Garden action",
+      "kind": "button",
+      "refersTo": "soft-button",
+      "description": "Cream pill used for reading the letter or replaying the garden.",
+      "html": "<button class=\"ds-soft-button\">Đọc lại thiệp</button>",
+      "css": ".ds-soft-button{font:400 12px/1.7 var(--sans,BeVietnam,'Segoe UI',sans-serif);color:var(--ink,#503d45);min-height:44px;padding:11px 22px;border:1px solid #997e7a45;border-radius:30px;background:#fffaf1f0;box-shadow:0 5px 18px #39544716;cursor:pointer;transition:background .2s,transform .2s}.ds-soft-button:hover{background:#fffdf8;transform:translateY(-2px)}.ds-soft-button:active{transform:translateY(0)}.ds-soft-button:focus-visible{outline:2px solid var(--rose,#a44d70);outline-offset:5px}@media(prefers-reduced-motion:reduce){.ds-soft-button{transition:none}}"
+    },
+    {
+      "name": "Return to garden",
+      "kind": "button",
+      "refersTo": "letter-return",
+      "description": "Quiet underlined action at the end of the letter.",
+      "html": "<button class=\"ds-letter-return\">Ngắm vườn hoa</button>",
+      "css": ".ds-letter-return{display:block;margin:0 auto;padding:7px 2px;min-height:44px;border:0;border-bottom:1px solid #87756a60;background:transparent;font:400 12px/1.7 var(--sans,BeVietnam,'Segoe UI',sans-serif);color:#586052;cursor:pointer}.ds-letter-return:hover{color:var(--rose,#a44d70);border-color:var(--rose,#a44d70)}.ds-letter-return:focus-visible{outline:2px solid var(--rose,#a44d70);outline-offset:5px}"
+    },
+    {
+      "name": "Letter close",
+      "kind": "button",
+      "refersTo": "close-letter",
+      "description": "Circular 44px close control; sticky in the actual scrolling dialog.",
+      "html": "<button class=\"ds-close-letter\" aria-label=\"Đóng thiệp, ngắm vườn hoa\"><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"m6 6 12 12M18 6 6 18\"/></svg></button>",
+      "css": ".ds-close-letter{width:44px;height:44px;border:0;background:var(--paper,#fffdf3);border-radius:50%;display:grid;place-items:center;cursor:pointer}.ds-close-letter svg{width:17px;height:17px;fill:none;stroke:#7b6f72;stroke-width:1.4}.ds-close-letter:hover{background:#f1ece0}.ds-close-letter:focus-visible{outline:2px solid var(--rose,#a44d70);outline-offset:5px}"
+    },
+    {
+      "name": "Letter paper",
+      "kind": "card",
+      "refersTo": "letter",
+      "description": "Cream surface, fine inset frame and centered Literata lettering; live letter uses native dialog scrolling and focus.",
+      "html": "<div class=\"ds-paper\"><article class=\"ds-paper-content\"><p class=\"ds-salutation\">Gửi Tiên iu dấu,</p><h2>Mong những<br>điều đẹp đẽ<br>luôn nở bên cậu.</h2></article></div>",
+      "css": ".ds-paper{width:min(424px,calc(100vw - 36px));color:var(--ink,#503d45);background:var(--paper,#fffdf3);border-radius:2px;box-shadow:var(--shadow,0 20px 70px #425d5430);overflow:auto}.ds-paper-content{margin:12px;border:1px solid #d6d5c35e;padding:28px 30px 22px;text-align:center}.ds-salutation{font:italic 14px/1.65 var(--serif,Literata,Georgia,serif);margin:0 0 16px}.ds-paper h2{font:400 clamp(27px,3.1vw,32px)/1.55 var(--serif,Literata,Georgia,serif);letter-spacing:-.025em;margin:0 0 22px}"
+    }
+  ],
+  "narrative": {
+    "northStar": "Vườn thương",
+    "overview": "The fifteen user reference photos and approved four-state brief establish the world: a soft cloudy sky, one layered pink rose, a garden growing from below and a centered cream letter. Preserve that world; the flowers carry the experience and the interface stays quiet.",
+    "keyCharacteristics": [
+      "Pastel atmosphere and dimensional, overlapping petals.",
+      "Literata lettering, restrained cream controls and an inset paper frame.",
+      "One continuous garden with an optional letter overlay."
+    ],
+    "rules": [],
+    "dos": [
+      "Do preserve the reference-led pastel sky, dimensional petals and cream paper.",
+      "Do keep the central rose identifiable within the layered garden.",
+      "Do preserve internal letter scrolling, visible close control and reduced-motion behavior."
+    ],
+    "donts": [
+      "Don't add dashboard framing, navigation sections or oversized controls.",
+      "Don't replace flowers with flat spiral symbols, screenshot backgrounds or confetti bursts; falling decoration stays sparse and botanical.",
+      "Don't reproduce the reference video's POV caption, browser chrome, monitor or keyboard."
+    ]
+  }
+}
